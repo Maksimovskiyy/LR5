@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, render_template, flash, redirect, url_for
 from dbase import db
 from models import CarTaxParam, Region
-from forms import CarTaxParamAddForm, CarTaxParamDeleteForm, CarTaxParamListForm, CarTaxParamUpdateForm
+from forms import CarTaxParamAddForm, CarTaxParamDeleteForm, CarTaxParamUpdateForm
 
 car_2_bp = Blueprint('car_2', __name__)
 
@@ -101,23 +101,18 @@ def delete_car_tax_param_web():
 
 @car_2_bp.route('/web/car/tax-param/get/all', methods=['GET'])
 def get_all_car_tax_params_web():
-    form = CarTaxParamListForm()
+    car_tax_params = CarTaxParam.query.all()
+    car_tax_params_list = [
+        {
+            'id': param.id,
+            'city_id': param.city_id,
+            'min_horsepower': param.from_hp_car,
+            'max_horsepower': param.to_hp_car,
+            'start_year': param.from_production_year_car,
+            'end_year': param.to_production_year_car,
+            'tax_rate': param.rate
+        }
+        for param in car_tax_params
+    ]
 
-    if form.validate_on_submit():
-        car_tax_params = CarTaxParam.query.all()
-        car_tax_params_list = [
-            {
-                'id': param.id,
-                'city_id': param.city_id,
-                'min_horsepower': param.from_hp_car,
-                'max_horsepower': param.to_hp_car,
-                'start_year': param.from_production_year_car,
-                'end_year': param.to_production_year_car,
-                'tax_rate': param.rate
-            }
-            for param in car_tax_params
-        ]
-
-        return render_template('tax-param-list.html', form=form, car_tax_params=car_tax_params_list)
-
-    return render_template('tax-param-list.html', form=form)
+    return render_template('tax-param-list.html', car_tax_params=car_tax_params_list)
