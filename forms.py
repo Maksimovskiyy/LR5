@@ -44,6 +44,7 @@ class CarTaxParamUpdateForm(FlaskForm):
     start_year = IntegerField('Start Year', validators=[DataRequired()])
     end_year = IntegerField('End Year', validators=[DataRequired()])
     rate = DecimalField('Tax Rate', validators=[DataRequired()])
+    submit = SubmitField('Update')
 
 
 class CarTaxCalcForm(FlaskForm):
