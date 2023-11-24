@@ -8,11 +8,10 @@
     <h1>Delete a Region</h1>
     <form method="POST" action="/web/region/delete">
         {{ form.hidden_tag() }}
-        <div class="form-group">
-            {{ form.id.label }}
-            {{ form.id(class="form-control") }}
+        <div>
+            {{ form.id.label }} {{ form.id() }}
         </div>
-        {{ form.submit(class="btn btn-danger") }}
+        {{ form.submit() }}
     </form>
     <div>
         <h2>Result:</h2>
@@ -20,7 +19,7 @@
             {% if messages %}
                 <ul>
                     {% for message in messages %}
-                        <li class="alert alert-{{ message.category }}">{{ message }}</li>
+                        <li>{{ message }}</li>
                     {% endfor %}
                 </ul>
             {% endif %}
