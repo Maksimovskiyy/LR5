@@ -8,16 +8,16 @@
     <h1>Car Tax Calculator</h1>
         <form method="POST" action="/v1/car/tax/calc">
         {{ form.hidden_tag() }}
-        <div class="form-group">
-            {{ form.city_id.label }} {{ form.city_id(size=20) }}
+        <div>
+            {{ form.city_id.label }} {{ form.city_id() }}
         </div>
-        <div class="form-group">
-            {{ form.horsepower.label }} {{ form.horsepower(size=20) }}
+        <div>
+            {{ form.horsepower.label }} {{ form.horsepower() }}
         </div>
-        <div class="form-group">
-            {{ form.year.label }} {{ form.year(size=20) }}
+        <div>
+            {{ form.year.label }} {{ form.year() }}
         </div>
-        <div class="form-group">
+        <div>
             {{ form.submit() }}
         </div>
         </form>
