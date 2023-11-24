@@ -64,6 +64,5 @@ def delete_region_web():
 
 @region_bp.route('/web/region', methods=['GET'])
 def get_region_web():
-    form = RegionListForm()
     regions = Region.query.all()
-    return render_template('region-list.html', regions=regions, form=form)
+    return render_template('region-list.html', regions=regions)
