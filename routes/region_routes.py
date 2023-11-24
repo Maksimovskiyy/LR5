@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, render_template, flash, redirect, url_for
 from dbase import db
 from models import Region
-from forms import RegionForm, RegionListForm, RegionDeleteForm, RegionUpdateForm
+from forms import RegionForm, RegionDeleteForm, RegionUpdateForm
 
 region_bp = Blueprint('region_bp', __name__)
 
