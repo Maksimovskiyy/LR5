@@ -6,10 +6,6 @@
 </head>
 <body>
     <h1>Car Tax Parameters List</h1>
-    <form method="POST" action="/web/car/tax-param/get/all">
-        {{ form.hidden_tag() }}
-        {{ form.submit(class="btn btn-primary") }}
-    </form>
     <ul>
         {% for param in car_tax_params %}
             <li>
