@@ -9,10 +9,6 @@ class RegionForm(FlaskForm):
     submit = SubmitField('Add')
 
 
-class RegionListForm(FlaskForm):
-    pass
-
-
 class RegionDeleteForm(FlaskForm):
     id = IntegerField('ID of region to delete:', validators=[DataRequired()])
     submit = SubmitField('Delete')
@@ -38,10 +34,6 @@ class CarTaxParamAddForm(FlaskForm):
 class CarTaxParamDeleteForm(FlaskForm):
     id = IntegerField('ID:', validators=[DataRequired()])
     submit = SubmitField('Delete')
-
-
-class CarTaxParamListForm(FlaskForm):
-    submit = SubmitField('Refresh')
 
 
 class CarTaxParamUpdateForm(FlaskForm):
